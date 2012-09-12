@@ -189,6 +189,10 @@ echo "$OUT" | indent
 
 set -e
 
+# Setup vendor lib/ and include/
+export CPATH=$(pwd)/.heroku/vendor/include
+export LIBRARY_PATH=$(pwd)/.heroku/vendor/lib
+
 # Pylibmc support.
 # See [`bin/steps/pylibmc`](pylibmc.html).
 source $BIN_DIR/steps/pylibmc
