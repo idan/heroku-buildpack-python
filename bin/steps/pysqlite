@@ -12,7 +12,7 @@
 # The location of the pre-compiled sqlite binary.
 VENDORED_SQLITE="http://heroku-sqlite.s3.amazonaws.com/vendor-sqlite3.tar.gz"
 
-# If pysqlite exists within requirements, use vendored libmemcached.
+# If pysqlite exists within requirements, use vendored sqlite.
 if (grep -Fiq "pysqlite" requirements.txt) then
   echo "-----> Noticed pysqlite. Bootstrapping sqlite."
   cd .heroku
