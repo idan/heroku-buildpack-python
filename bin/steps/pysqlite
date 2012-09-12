@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+# This script serves as the sqlite3 build step of the
+# [**Python Buildpack**](https://github.com/heroku/heroku-buildpack-python) 
+# compiler. 
+# 
+# A [buildpack](http://devcenter.heroku.com/articles/buildpacks) is an 
+# adapter between a Python application and Heroku's runtime.
+#
+# This script is invoked by [`bin/compile`](/).
+
+# The location of the pre-compiled sqlite binary.
+VENDORED_SQLITE="http://heroku-sqlite.s3.amazonaws.com/vendor-sqlite3.tar.gz"
+
+# If pysqlite exists within requirements, use vendored libmemcached.
+if (grep -Fiq "pysqlite" requirements.txt) then
+  echo "-----> Noticed pysqlite. Bootstrapping sqlite."
+  cd .heroku
+
+  if [ -e "vendor/lib/libsqlite3.so" ]; then
+    export SQLITE=$(pwd)/vendor
+  else
+    # Download and extract sqlite into target vendor directory.
+    curl -s -L -o tmp-sqlite.tar.gz $VENDORED_SQLITE
+    tar -zxvf tmp-sqlite.tar.gz > /dev/null
+    rm tmp-sqlite.tar.gz
+    export SQLITE=$(pwd)/vendor
+  fi
+
+  export SQLITE=$(pwd)/vendor
+  cd ..
+fi
+
+
+

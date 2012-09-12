@@ -7,6 +7,7 @@ docs:
 	shocco -t 'Django Buildpack Compiler' ./bin/steps/django > site/django.html
 	shocco -t 'Python Buildpack Detector' ./bin/detect > site/detect.html
 	shocco -t 'Pylibmc Buildpack Compiler' ./bin/steps/pylibmc > site/pylibmc.html
+	shocco -t 'Pysqlite Buildpack Compiler' ./bin/steps/pysqlite > site/pysqlite.html
 	shocco -t 'Python Buildpack Changelog' ./Changelog.md > site/changelog.html
 
 site: docs

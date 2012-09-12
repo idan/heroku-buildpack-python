@@ -193,6 +193,10 @@ set -e
 # See [`bin/steps/pylibmc`](pylibmc.html).
 source $BIN_DIR/steps/pylibmc
 
+# Pysqlite support.
+# See [`bin/steps/pysqlite`](pysqlite.html).
+source $BIN_DIR/steps/pysqlite
+
 # Activate the Virtualenv.
 puts-step "Activating virtualenv"
 source $VIRTUALENV_LOC/bin/activate

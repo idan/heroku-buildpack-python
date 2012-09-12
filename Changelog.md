@@ -1,3 +1,9 @@
+## v15
+
+Features:
+
+* Support for pysqlite.
+
 ## v14
 
 Features:
